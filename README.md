@@ -27,3 +27,6 @@ In 2026, we develop software using these languages and tools:
 It depends on whether we had access to cassette tape or only to punch card based computers.
 1. if we had cassette tapes we could have written all of this in assembly, saved it to a cassette, and with the use of another casette (on which we had the compiler) we could have translated that assembly code into normal machine code
 2. if we only had access to punch cards we would have written the code on paper (in assembly), which then we would have had to translate into machine code by hand, based on which we could have punched the holes into the cards, and then we could only hope we didn't mess up any part of the process
+
+## 5. QR Code
+![qrcode.png](qrcode.png)
