@@ -1,0 +1,209 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Kandó 1976–2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: vertical timeline, year rail on the left, each milestone a four-part Then/Now reading.
+   Tokens: paper, ink, 1976 amber (punched card), 2026 teal (terminal), rule. */
+:root{
+  --bg:#F2F2EE; --surface:#FFFFFF; --ink:#16191C; --muted:#5A6168; --rule:#D5D7D1;
+  --then:#C2410C; --then-soft:#FBE9DD; --now:#0F6B66; --now-soft:#DDF0EE;
+  --display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111416; --surface:#1A1E21; --ink:#ECEEEA; --muted:#9BA3A9; --rule:#31373B;
+  --then:#F28A55; --then-soft:#3A2418; --now:#5CC8BF; --now-soft:#14302E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111416; --surface:#1A1E21; --ink:#ECEEEA; --muted:#9BA3A9; --rule:#31373B;
+  --then:#F28A55; --then-soft:#3A2418; --now:#5CC8BF; --now-soft:#14302E; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-block:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--now)}
+a:focus-visible{outline:2px solid var(--now);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.08}
+
+header{padding-block:56px 36px}
+.kicker{font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(40px,8vw,84px);font-weight:800;letter-spacing:-.02em;margin-top:14px}
+h1 .a{color:var(--then)} h1 .b{color:var(--now)}
+.lead{max-width:62ch;font-size:19px;margin:20px 0 0}
+.q{margin-top:28px;padding:16px 20px;border-left:4px solid var(--now);background:var(--surface);max-width:62ch}
+.q b{font-family:var(--display);font-size:20px}
+
+.scale{margin:56px 0 8px;position:relative;height:60px}
+.scale .bar{position:absolute;left:0;right:0;top:34px;height:4px;background:linear-gradient(90deg,var(--then),var(--now));border-radius:2px}
+.scale a{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink);font:500 13px/20px var(--mono)}
+.scale a i{display:block;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--ink)}
+.scale a:first-of-type{transform:none;align-items:flex-start}
+.scale a:last-of-type{transform:translateX(-100%);align-items:flex-end}
+
+.ms{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;padding-block:44px;border-top:1px solid var(--rule)}
+.yr{position:sticky;top:12px;align-self:start}
+.yr .y{font:800 clamp(44px,6vw,64px)/1 var(--display);letter-spacing:-.03em}
+.yr .n{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.ms h2{font-size:clamp(26px,3.6vw,38px);font-weight:700;margin-bottom:10px}
+.ms .sum{max-width:64ch;margin:0 0 22px;color:var(--muted);font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{background:var(--surface);padding:18px 20px;border:1px solid var(--rule);min-width:0}
+.box h3{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.box p,.box ul{margin:0;font-size:15.5px}
+.box ul{padding-left:18px}.box li+li{margin-top:5px}
+.box.skills{background:var(--now-soft);border-color:transparent}
+.tag{display:inline-block;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;margin-left:6px;vertical-align:1px;border:1px solid currentColor}
+.tag.src{color:var(--then)} .tag.ctx{color:var(--muted)}
+.ms.old .y{color:var(--then)} .ms.new .y{color:var(--now)}
+
+.cmp{padding-block:56px;border-top:1px solid var(--rule)}
+.cmp h2{font-size:clamp(28px,4vw,44px);font-weight:800;margin-bottom:12px}
+.cmp .sum{max-width:66ch;color:var(--muted);margin:0 0 20px}
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:12px 16px;border-bottom:1px solid var(--rule)}
+th{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+th.a{color:var(--then)} th.b{color:var(--now)}
+td:first-child{font-weight:600;width:16%}
+tr:last-child td{border-bottom:0}
+.kept{margin-top:24px;padding:20px 22px;background:var(--then-soft);max-width:70ch}
+.kept b{font-family:var(--display);font-size:20px}
+
+footer{padding-block:40px 64px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+footer h3{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;color:var(--ink)}
+footer ul{padding-left:18px;margin:0 0 22px}footer li+li{margin-top:4px}
+.verify{padding:14px 18px;border:1px dashed var(--muted);color:var(--ink);max-width:70ch}
+
+@media(max-width:760px){
+  .ms{grid-template-columns:minmax(0,1fr);gap:8px}
+  .yr{position:static;display:flex;align-items:baseline;gap:12px}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .scale a{font-size:11px}
+}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="kicker">Kecskemét · Kandó Kálmán school · Software developer and tester programme</div>
+  <h1><span class="a">1976</span> → <span class="b">2026</span><br>How computing and its programme grew at the school</h1>
+  <p class="lead">The school that is today the Kecskeméti SZC Kandó Kálmán Technikum opened in 1968 as the 623. sz. Ipari Szakmunkásképző Intézet. This timeline follows one line of its work: the path from electronics trades to today's five-year software developer and tester programme, set against how computing itself changed.</p>
+  <div class="q"><b>How did they do it in 1976, and how do we do it in 2026?</b><br>Each milestone asks the same four questions: what computing looked like, what the school offered in computing, how the work was done, and which skills it needed.</div>
+  <nav class="scale" aria-label="Milestones">
+    <div class="bar"></div>
+    <a href="#m1" style="left:0"><span>1976</span><i></i></a>
+    <a href="#m2" style="left:18%"><span>1985</span><i></i></a>
+    <a href="#m3" style="left:44%"><span>1998</span><i></i></a>
+    <a href="#m4" style="left:56%"><span>2004</span><i></i></a>
+    <a href="#m5" style="left:100%"><span>2026</span><i></i></a>
+  </nav>
+</header>
+
+<section class="ms old" id="m1">
+  <div class="yr"><div class="y">1976</div><div class="n">Milestone 1</div></div>
+  <div>
+    <h2>No computing course yet, only the electronics trades that led to it</h2>
+    <p class="sum">The school moved into its new building on Bethlen körút. A student could not study programming, but could train as a radio and TV mechanic or electrical and instrument mechanic.</p>
+    <div class="grid">
+      <div class="box"><h3>Computing then <span class="tag ctx">context</span></h3>
+        <p>Computers were mainframes in institutes and large firms. Programs were punched on cards and run in batches, and results came back hours later on paper. No job for a school-leaver was called "software developer".</p></div>
+      <div class="box"><h3>At the school <span class="tag src">source</span></h3>
+        <ul>
+          <li>The 1968 three-year trades already included electronics ones: electroműszerész (electrical instrument mechanic), rádió-tv műszerész (radio and TV mechanic), mechanikai műszerész (mechanical instrument mechanic) and villanyszerelő (electrician).</li>
+          <li>The new building (1976) had 16 classrooms, 4 specialist rooms, and a slide projector and overhead projector in every room.</li>
+          <li>By 1978 a student was already learning to service numerically controlled machine tools.</li>
+          <li>The first secondary-school class with a school-leaving exam, in electronics, started only in 1980.</li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="ms old" id="m2">
+  <div class="yr"><div class="y">1985</div><div class="n">Milestone 2</div></div>
+  <div>
+    <h2>The first computing programme: computer technicians</h2>
+    <p class="sum">Home and school computers arrived in Hungary, and the school opened its first computing class and its first workshop for it.</p>
+    <div class="grid">
+      <div class="box"><h3>Computing then <span class="tag ctx">context</span></h3>
+        <p>8-bit machines such as the Commodore 64, ZX Spectrum and Videoton TV-Computer used a TV screen and a cassette recorder. Programming meant typing BASIC line by line in a few dozen kilobytes of memory.</p></div>
+      <div class="box"><h3>At the school <span class="tag src">source</span></h3>
+        <ul>
+          <li>1985: the school started számítástechnikai műszerész (computer technician) training with a school-leaving exam.</li>
+          <li>September 1985: the first school workshop opened, built for training computing and electronics technicians.</li>
+          <li>The school was called the Vágó Béla Ipari Szakmunkásképző és Szakközépiskola from 1981.</li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="ms old" id="m3">
+  <div class="yr"><div class="y">1998</div><div class="n">Milestone 3</div></div>
+  <div>
+    <h2>The school becomes Kandó Kálmán, with its own workshops</h2>
+    <p class="sum">After the 1989–91 political change, companies closed their training workshops, and the school built its own. This is the decade the Windows PC and the internet entered schools.</p>
+    <div class="grid">
+      <div class="box"><h3>Computing then <span class="tag ctx">context</span></h3>
+        <p>Windows PCs, floppy disks and CD-ROMs, first websites and email. Programs were written in Pascal, C++, Visual Basic or Delphi and sold in boxes. A bug found after release could not be fixed quickly.</p></div>
+      <div class="box"><h3>At the school <span class="tag src">source</span></h3>
+        <ul>
+          <li>March 1991: named after Kálmán Kandó (Kandó Kálmán Műszaki Szakmunkásképző és Szakközépiskola). Peak enrolment of 1,502 students in 1990/91.</li>
+          <li>1991: five school workshops built. 1993: the former DUTÉP hall was added.</li>
+          <li>Six electronics practice rooms and one metalworking room were built, making the school a practice base for electronics, telecommunications and computing technician training.</li>
+          <li>1995: the profile that lasted into the 2000s took shape. 27 November 1998: a commemoration and statue unveiling, held by the Kandó Kálmán School Foundation.</li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="ms new" id="m4">
+  <div class="yr"><div class="y">2004</div><div class="n">Milestone 4</div></div>
+  <div>
+    <h2>Informatics becomes a secondary-school subject area, and the software developer qualification appears</h2>
+    <p class="sum">Broadband and the web turned programs into websites and phone apps. The school added an informatics class and, later, a national qualification called Szoftverfejlesztő.</p>
+    <div class="grid">
+      <div class="box"><h3>Computing then <span class="tag ctx">context</span></h3>
+        <p>Web applications (PHP, MySQL, Java, .NET), smartphones from 2007–08, open-source libraries and search engines. Updates reached users the same day.</p></div>
+      <div class="box"><h3>At the school <span class="tag src">source</span></h3>
+        <ul>
+          <li>2004: informatikai szakközépiskolai oktatás (informatics secondary-school training) started.</li>
+          <li>2005 and 2009: mechatronics and machine-manufacturing classes followed, which shows the school's technical profile widening toward automation.</li>
+          <li>2006: Szoftverfejlesztő (OKJ 54 213 05) entered the national qualification register, according to a training provider's page.</li>
+          <li>The school changed legal form several times (2008 Kecskeméti Műszaki Szakképző Iskola; 2015 Kecskeméti Szakképzési Centrum).</li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="ms new" id="m5">
+  <div class="yr"><div class="y">2026</div><div class="n">Milestone 5</div></div>
+  <div>
+    <h2>A five-year technikum for software developers and testers</h2>
+    <p class="sum">Since 2020 the school is the Kecskeméti SZC Kandó Kálmán Technikum. The Szoftverfejlesztő és -tesztelő programme gives students the school-leaving exam and a technician diploma together.</p>
+    <div class="grid">
+      <div class="box"><h3>Computing now <span class="tag ctx">context</span></h3>
+        <p>Cloud services, Git, automated tests that run on every change, containers, agile sprints and AI coding assistants. A release can go out many times a day.</p></div>
+      <div class="box"><h3>At the school <span class="tag src">source</span></h3>
+        <ul>
+          <li>Five years in the Informatika és távközlés sector: two years of sector basics ending in a basic exam, then three years of specialised training.</li>
+          <li>Students learn to design, develop, test and document web, desktop and mobile applications, design databases, and work in a team.</li>
+          <li>Practice happens mostly at partner companies (dual training) or, if none is available, in the school's workshop.</li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  <h3>Sources</h3>
+  <ul>
+    <li><a href="https://www.kkando.hu/rolunk/tortenet">Kandó Technikum, school history</a>: names, programmes, workshops, enrolment.</li>
+    <li><a href="https://www.kkando.hu/kepzeseink/technikum-szakkepzo/szoftverfejleszto-es-tesztelo">Kandó Technikum, Szoftverfejlesztő és -tesztelő page</a> and its linked KKK/PTT requirements; the 2019 Szoftverfejlesztő requirements (<a href="https://www.eszi.hu/static/szakkepzes/szvk2019/54_213_05_Szoftverfejleszto_2019.pdf">ITM decree 29/2019</a>).</li>
+    <li><a href="https://library.hungaricana.hu/hu/view/BacsKiskunMegyeiNepujsag_1976_11/?pg=8&layout=s">Petőfi Népe, 3 Nov 1976</a>, <a href="https://library.hungaricana.hu/hu/view/BacsKiskunMegyeiNepujsag_1976_11/?pg=175&layout=s">26 Nov 1976</a> and <a href="https://library.hungaricana.hu/hu/view/BacsKiskunMegyeiNepujsag_1977_02/?pg=96&layout=s">15 Feb 1977</a>: the new building and its equipment.</li>
+    <li>Országvilág, 24 May 1978, "Nevesincs iskola": numerically controlled machines in the school.</li>
+    <li><a href="https://kjk.dspace.qulto.eu/items/782d1047-2c69-4a65-acbf-3d90155f0a77">1998 Kandó Kálmán foundation invitation</a>, Katona József Library; <a href="https://szakkepesites.hu/okj/tanfolyamok/szoftverfejleszto">Szoftverfejlesztő OKJ page</a> for the 2006 register date.</li>
+  </ul>
+</footer>
+</div>
+
+</body></html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Kandó kvíz</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                margin: 0;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                box-sizing: border-box;
+                background: #f4f4f4;
+                color: #222;
+                text-align: center;
+            }
+            #box {
+                width: 100%;
+                max-width: 600px;
+                box-sizing: border-box;
+                background: #fff;
+                border: 1px solid #ccc;
+                border-radius: 16px;
+                padding: 1.5rem;
+            }
+            button {
+                display: block;
+                width: 100%;
+                margin: 0.5rem 0;
+                padding: 0.7rem;
+                font-size: 1rem;
+                border: 1px solid #888;
+                border-radius: 10px;
+                background: #fff;
+                cursor: pointer;
+                text-align: center;
+            }
+            button:hover:enabled {
+                background: #eee;
+            }
+            button:disabled {
+                cursor: default;
+            }
+            .correct {
+                background: #bde5bd !important;
+                border-color: green;
+            }
+            .wrong {
+                background: #f0b8b8 !important;
+                border-color: red;
+            }
+            #next,
+            #restart {
+                text-align: center;
+                background: #333;
+                color: #fff;
+            }
+            #next:hover,
+            #restart:hover {
+                background: #555 !important;
+            }
+            #progress {
+                color: #666;
+            }
+            button {
+                transition: background 0.2s, transform 0.1s;
+            }
+            button:active:enabled {
+                transform: scale(0.97);
+            }
+            /* newly inserted elements fade in; answers appear one after another */
+            #box > * {
+                animation: fade-in 0.35s ease-out backwards;
+            }
+            #box > button:nth-of-type(2) { animation-delay: 0.05s; }
+            #box > button:nth-of-type(3) { animation-delay: 0.1s; }
+            #box > button:nth-of-type(4) { animation-delay: 0.15s; }
+            #box > .wrong {
+                animation: shake 0.35s;
+            }
+            @keyframes fade-in {
+                from { opacity: 0; transform: translateY(10px); }
+            }
+            @keyframes shake {
+                25% { transform: translateX(-6px); }
+                75% { transform: translateX(6px); }
+            }
+
+			h1 {
+				position: absolute;
+				left: 50%;
+				top: 2rem;
+				text-align: center;
+				transform: translateX(-50%);
+			}
+        </style>
+    </head>
+    <body>
+        <h1>Kandó kvíz</h1>
+        <div id="box"></div>
+
+        <script>
+            const QUESTIONS = [
+                [
+                    "Melyik körúton van a Kandó?",
+                    "Bethlen",
+                    ["Teréz", "Erzsébet", "Szent István"],
+                ],
+                [
+                    "Kandó Kálmán találmánya, amely a nehéz vasúti vontatást forradalmasította:",
+                    "Fázisváltó",
+                    ["Gőzmozdony", "Dízelmotor", "Áramszedő"],
+                ],
+                ["Hány főbb épülete van a Kandónak?", "4", ["1", "10", "7"]],
+                [
+                    "Mikor alapították a Kandót?",
+                    "1968",
+                    ["1958", "1972", "2024"],
+                ],
+                [
+                    "Az intézményt fenntartó szakképzési centrum rövidítése:",
+                    "KSZC",
+                    ["BSZC", "SZC", "KSZK"],
+                ],
+                [
+                    "Az intézmény hivatalos típusa:",
+                    "Technikum",
+                    ["Gimnázium", "Szakközépiskola", "Főiskola"],
+                ],
+                [
+                    "A hely, ahol a diákok a szakmai gyakorlati fogásokat elsajátítják az iskolában:",
+                    "Tanműhely",
+                    ["Laboratórium", "Aula", "Könyvtár"],
+                ],
+                ["Hány szakma van a Kandóban?", "18", ["12", "24", "15"]],
+            ];
+
+            const box = document.getElementById("box");
+            const shuffle = (a) => [...a].sort(() => Math.random() - 0.5);
+            let i, score;
+
+            function start() {
+                i = 0;
+                score = 0;
+                show();
+            }
+
+            function show() {
+                const [q, correct, wrong] = QUESTIONS[i];
+                box.innerHTML = `<p id="progress">${i + 1}. kérdés / ${QUESTIONS.length}</p><h2></h2>`;
+                box.querySelector("h2").textContent = q;
+                shuffle([correct, ...wrong]).forEach((ans) => {
+                    const b = document.createElement("button");
+                    b.textContent = ans;
+                    b.onclick = () => answer(b, correct);
+                    box.appendChild(b);
+                });
+            }
+
+            function answer(clicked, correct) {
+                const buttons = [...box.querySelectorAll("button")];
+                buttons.forEach((b) => {
+                    b.disabled = true;
+                    if (b.textContent === correct) b.classList.add("correct");
+                });
+                if (clicked.textContent === correct) score++;
+                else clicked.classList.add("wrong");
+
+                const next = document.createElement("button");
+                next.id = "next";
+                next.textContent =
+                    i + 1 < QUESTIONS.length ? "Következő" : "Eredmény";
+                next.onclick = () =>
+                    ++i < QUESTIONS.length ? show() : finish();
+                box.appendChild(next);
+            }
+
+            function finish() {
+                box.innerHTML = `<h2>Vége!</h2><p>Pontszámod: <strong>${score} / ${QUESTIONS.length}</strong> (${Math.round((score / QUESTIONS.length) * 100)}%)</p>`;
+                const r = document.createElement("button");
+                r.id = "restart";
+                r.textContent = "Újra";
+                r.onclick = start;
+                box.appendChild(r);
+            }
+
+            start();
+        </script>
+    </body>
+</html>
